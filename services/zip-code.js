@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: `https://restcountries.com/v3.1`,
+  baseURL: `https://api.zippopotam.us`,
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -10,7 +10,7 @@ const apiClient = axios.create({
 })
 
 export default {
-  getCountries() {
-    return apiClient.get('/all')
+  getPlace(countryCode, postalCode) {
+    return apiClient.get(`${countryCode}/${postalCode}`)
   },
 }

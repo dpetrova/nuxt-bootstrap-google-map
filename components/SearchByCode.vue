@@ -77,9 +77,10 @@ export default {
     }),
   },
   methods: {
-    onSubmit(event) {
+    async onSubmit(event) {
       event.preventDefault()
-      this.$store.dispatch('countries/locatePlace', this.form)
+      await this.$store.dispatch('place/locate', this.form)
+      this.$bus.$emit('refreshMap')
     },
     onReset(event) {
       event.preventDefault()

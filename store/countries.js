@@ -20,11 +20,13 @@ export const actions = {
 
 export const getters = {
   countries: (state) => {
-    return state.countries.map(({ name, cca2: code }) => {
-      return {
-        name: name.common,
-        code,
-      }
-    })
+    return state.countries
+      .map(({ name, cca2: code }) => {
+        return {
+          name: name.common,
+          code,
+        }
+      })
+      .sort((a, b) => a.name.localeCompare(b.name))
   },
 }
